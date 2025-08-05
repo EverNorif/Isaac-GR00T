@@ -233,6 +233,18 @@ class So100DualCamDataConfig(So100DataConfig):
 ###########################################################################################
 
 
+class So101SingleCamDataConfig(So100DataConfig):
+    video_keys = ["video.front"]
+    state_keys = ["state.single_arm", "state.gripper"]
+    action_keys = ["action.single_arm", "action.gripper"]
+    language_keys = ["annotation.human.task_description"]
+    observation_indices = [0]
+    action_indices = list(range(16))
+
+
+###########################################################################################
+
+
 class UnitreeG1DataConfig(BaseDataConfig):
     video_keys = ["video.rs_view"]
     state_keys = ["state.left_arm", "state.right_arm", "state.left_hand", "state.right_hand"]
@@ -888,6 +900,7 @@ DATA_CONFIG_MAP = {
     "single_panda_gripper": SinglePandaGripperDataConfig(),
     "so100": So100DataConfig(),
     "so100_dualcam": So100DualCamDataConfig(),
+    "so101_singlecam": So101SingleCamDataConfig(),
     "unitree_g1": UnitreeG1DataConfig(),
     "unitree_g1_full_body": UnitreeG1FullBodyDataConfig(),
     "oxe_droid": OxeDroidDataConfig(),
